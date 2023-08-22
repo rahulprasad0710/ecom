@@ -7,17 +7,15 @@
 // }
 
 const UserSignup = () => {
-    const [userData, setuserData] = useState(second);
-
     const handleSubmit = () => {
         console.log("handleSubmit");
     };
 
     return (
-        <div className='container '>
-            <div className='row offset-2 py-5'>
+        <div className='container pt-3'>
+            <div className='row offset-2 '>
                 <div className='col-8'>
-                    <form>
+                    <form className='card p-5'>
                         <div className='row'>
                             <div className='col-12 col-md-6'>
                                 <div className='mb-3'>
