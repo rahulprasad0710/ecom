@@ -49,13 +49,17 @@ const UserSignup = () => {
 
     return (
         <div className='container pt-3'>
-            <h5 className='mb-3'>Sign Up </h5>
-            <pre>{JSON.stringify(signupData, null, 2)}</pre>
-            <div className='row offset-2 '>
-                <div className='col-8'>
-                    <form className='card p-5'>
+            {/* <pre>{JSON.stringify(signupData, null, 2)}</pre> */}
+            <div className='row  offset-lg-2 '>
+                <div className='col-12 col-md-12 col-lg-8'>
+                    <form className='card  p-3'>
+                        <div className='col-12'>
+                            <h5 className='mb-3 text-center text-primary fw-bold'>
+                                Sign Up{" "}
+                            </h5>
+                        </div>
                         <div className='row'>
-                            <div className='col-12 '>
+                            <div className='col-12 col-md-6'>
                                 <div className='mb-3'>
                                     <label className='form-label'>Name</label>
                                     <input
@@ -70,7 +74,7 @@ const UserSignup = () => {
                                     />
                                 </div>
                             </div>
-                            <div className='col-12 m'>
+                            <div className='col-12 col-md-6 '>
                                 <div className='mb-3'>
                                     <label className='form-label'>
                                         Username
@@ -87,7 +91,7 @@ const UserSignup = () => {
                                     />
                                 </div>
                             </div>
-                            <div className='col-12 m'>
+                            <div className='col-12 col-md-6 '>
                                 <div className='mb-3'>
                                     <label className='form-label'>
                                         Mobile Number
@@ -104,7 +108,7 @@ const UserSignup = () => {
                                     />
                                 </div>
                             </div>
-                            <div className='col-12 m'>
+                            <div className='col-12 col-md-6 '>
                                 <div className='mb-3'>
                                     <label className='form-label'>
                                         Email address
@@ -121,7 +125,7 @@ const UserSignup = () => {
                                     />
                                 </div>
                             </div>
-                            <div className='col-12 m'>
+                            <div className='col-12 col-md-6 '>
                                 <div className='mb-3'>
                                     <label className='form-label'>
                                         Password
@@ -139,7 +143,7 @@ const UserSignup = () => {
                                     />
                                 </div>
                             </div>
-                            <div className='col-12 m'>
+                            <div className='col-12 col-md-6 '>
                                 <div className='mb-3'>
                                     <label className='form-label'>
                                         Confirm Password
