@@ -22,7 +22,7 @@ const Navbar = () => {
                 <div className='collapse navbar-collapse' id='navbarColor01'>
                     <ul className='navbar-nav ms-auto'>
                         <li className='nav-item'>
-                            <NavLink className='nav-link' to='/auth/signup'>
+                            <NavLink className='nav-link' to='/auth/login'>
                                 Login
                             </NavLink>
                         </li>

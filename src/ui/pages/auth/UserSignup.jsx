@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import API_ROUTES from "../../../api/apiRoutes";
@@ -27,7 +27,7 @@ const UserSignup = () => {
             console.log(response);
             if (response.data.success) {
                 toast.success(response.data.message);
-                navigate("/");
+                navigate("/auth/login");
             }
         } catch (error) {
             // console.log("error", error);
@@ -177,6 +177,10 @@ const UserSignup = () => {
                             )}
                         </button>
                     </form>
+                </div>
+                <div className='col-12'>
+                    <p>Already have an account ?</p>
+                    <Link to='/auth/login'>Login</Link>
                 </div>
             </div>
         </div>
