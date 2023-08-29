@@ -3,7 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import API_ROUTES from "../../../api/apiRoutes";
+import { useContext } from "react";
+import { ThemeContext } from "../../../context/ThemeContext";
+
 const UserLogin = () => {
+    const globalState = useContext(ThemeContext);
+    console.log(globalState);
+    const { isDarkMode } = globalState;
+
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [signupData, setSignupData] = useState({
@@ -53,9 +60,15 @@ const UserLogin = () => {
                 <div className='col-12 col-md-12 col-lg-8'>
                     <form className='card  p-3'>
                         <div className='col-12'>
-                            <h5 className='mb-3 text-center text-primary fw-bold'>
+                            <h5
+                                className={
+                                    isDarkMode
+                                        ? "mb-3 text-center text-light fw-bold bg-dark"
+                                        : "mb-3 text-center text-primary fw-bold"
+                                }>
                                 Login
                             </h5>
+                            <h4>{name}</h4>
                         </div>
                         <div className='row'>
                             <div className='col-12 col-md-12 '>
