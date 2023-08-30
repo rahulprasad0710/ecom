@@ -1,11 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
-import { ThemeContext } from "../../context/ThemeContext";
 import { BrightnessAltHigh, MoonFill } from "react-bootstrap-icons";
+import useThemeContext from "../../hook/useThemeContext";
 
 const Navbar = () => {
-    const { isDarkMode, handleDarkMode } = useContext(ThemeContext);
-
+    const { handleDarkMode, isDarkMode } = useThemeContext();
     const handleToggleDarkMode = () => {
         handleDarkMode();
     };
