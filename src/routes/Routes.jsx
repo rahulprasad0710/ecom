@@ -8,12 +8,22 @@ import AdminLogin from "../ui/pages/auth/AdminLogin";
 import PageNotFound from "../ui/pages/utils/PageNotFound";
 import AdminLayout from "../ui/pages/admin/AdminLayout";
 import AdminDashboard from "../ui/pages/admin/AdminDashboard";
+import HomePage from "../ui/pages/HomePage";
+import ProductPage from "../ui/pages/ProductList";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
         children: [
+            {
+                path: "",
+                element: <HomePage />,
+            },
+            {
+                path: "products",
+                element: <ProductPage />,
+            },
             {
                 path: "auth",
                 element: <AuthLayout />,
