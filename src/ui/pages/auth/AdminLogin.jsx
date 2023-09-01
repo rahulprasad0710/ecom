@@ -3,8 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useState } from "react";
 import API_ROUTES from "../../../api/apiRoutes";
+import { Eye, EyeSlash } from "react-bootstrap-icons";
 
 const AdminLogin = () => {
+    const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [signupData, setSignupData] = useState({
@@ -23,6 +25,10 @@ const AdminLogin = () => {
 
             console.log(response);
             if (response.data.success) {
+                localStorage.setItem(
+                    "token",
+                    response?.data?.data?.accessToken
+                );
                 toast.success(response.data.message);
                 navigate("/admin/dashboard");
             }
@@ -82,7 +88,9 @@ const AdminLogin = () => {
                                         Password
                                     </label>
                                     <input
-                                        type='password'
+                                        type={
+                                            showPassword ? "text" : "password"
+                                        }
                                         onChange={(e) =>
                                             setSignupData({
                                                 ...signupData,
@@ -92,6 +100,12 @@ const AdminLogin = () => {
                                         className='form-control'
                                         id='exampleInputPassword1'
                                     />
+                                    <span
+                                        onClick={() =>
+                                            setShowPassword(!showPassword)
+                                        }>
+                                        {showPassword ? <Eye /> : <EyeSlash />}
+                                    </span>
                                 </div>
                             </div>
                         </div>

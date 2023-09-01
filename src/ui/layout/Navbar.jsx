@@ -1,8 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { BrightnessAltHigh, MoonFill } from "react-bootstrap-icons";
 import useThemeContext from "../../hook/useThemeContext";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
 
 const Navbar = () => {
+    const { userInfo, handleLogoutFn } = useContext(AuthContext);
+    console.log(userInfo, "userInfo from navbar");
     const { handleDarkMode, isDarkMode } = useThemeContext();
     const handleToggleDarkMode = () => {
         handleDarkMode();
@@ -40,11 +44,53 @@ const Navbar = () => {
                                 )}
                             </div>
                         </li>
-                        <li className='nav-item'>
-                            <NavLink className='nav-link' to='/auth/login'>
-                                Login
-                            </NavLink>
-                        </li>
+                        {userInfo?.id && userInfo?.isAdmin && (
+                            <>
+                                <li className='nav-item'>
+                                    <NavLink
+                                        className='nav-link'
+                                        to='/admin/dashboard'>
+                                        Dashboard
+                                    </NavLink>
+                                </li>
+                                <li className='nav-item'>
+                                    <button
+                                        onClick={() => handleLogoutFn()}
+                                        className='nav-link'
+                                        to='/auth/login'>
+                                        Logout
+                                    </button>
+                                </li>
+                            </>
+                        )}
+
+                        {userInfo?.id && !userInfo?.isAdmin && (
+                            <>
+                                <li className='nav-item'>
+                                    <NavLink
+                                        className='nav-link'
+                                        to='/my-account/profile'>
+                                        My account
+                                    </NavLink>
+                                </li>
+                                <li className='nav-item'>
+                                    <button
+                                        onClick={() => handleLogoutFn()}
+                                        className='nav-link'
+                                        to='/auth/login'>
+                                        Logout
+                                    </button>
+                                </li>
+                            </>
+                        )}
+
+                        {!userInfo.accessToken && (
+                            <li className='nav-item'>
+                                <NavLink className='nav-link' to='/auth/login'>
+                                    Login
+                                </NavLink>
+                            </li>
+                        )}
                     </ul>
                 </div>
             </div>

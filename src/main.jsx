@@ -8,11 +8,14 @@ import "./index.css";
 
 import router from "./routes/Routes.jsx";
 import ThemeProvider from "./context/ThemeProvider";
+import AuthProvider from "./context/AuthProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <ThemeProvider>
-            <RouterProvider router={router} />
-        </ThemeProvider>
+        <AuthProvider>
+            <ThemeProvider>
+                <RouterProvider router={router} />
+            </ThemeProvider>
+        </AuthProvider>
     </React.StrictMode>
 );
