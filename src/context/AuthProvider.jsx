@@ -19,7 +19,7 @@ const AuthProvider = (props) => {
     const [userInfo, setuserInfo] = useState(intialState);
     const tokenFromLocalStore = localStorage.getItem("token");
     const [token, setToken] = useState(tokenFromLocalStore ?? null);
-    const [isAuthenticating, setIsAuthenticating] = useState(false);
+    const [isAuthenticating, setIsAuthenticating] = useState(true);
 
     const handleLoginFn = async (payload) => {
         setuserInfo(payload);
@@ -54,6 +54,8 @@ const AuthProvider = (props) => {
     useEffect(() => {
         if (token) {
             handleAuthenticateFn();
+        } else {
+            setIsAuthenticating(false);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
