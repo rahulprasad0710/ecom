@@ -42,17 +42,24 @@ const AuthProvider = (props) => {
         }
     };
 
+    const handleLoginFn = async (payload) => {
+        setuserInfo(payload);
+    };
+
     const handleLogoutFn = () => {
         localStorage.removeItem("token");
         setuserInfo(intialState);
     };
     useEffect(() => {
-        handleAuthenticateFn();
+        if (token) {
+            handleAuthenticateFn();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
-        <AuthContext.Provider value={{ userInfo, handleLogoutFn }}>
+        <AuthContext.Provider
+            value={{ userInfo, handleLogoutFn, handleLoginFn }}>
             {isAuthenticating ? <Loader /> : children}
         </AuthContext.Provider>
     );

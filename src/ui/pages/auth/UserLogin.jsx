@@ -5,8 +5,10 @@ import { useState } from "react";
 import API_ROUTES from "../../../api/apiRoutes";
 import { useContext } from "react";
 import { ThemeContext } from "../../../context/ThemeContext";
+import useAuthContext from "../../../hook/useAuthContext";
 
 const UserLogin = () => {
+    const { handleLoginFn } = useAuthContext();
     const globalState = useContext(ThemeContext);
     console.log(globalState);
     const { isDarkMode } = globalState;
@@ -28,11 +30,13 @@ const UserLogin = () => {
             const response = await axios.post(API_ROUTES.USER_LOGIN, payload);
 
             console.log(response);
-            if (response.data.success) {
+            if (response?.data?.success) {
                 localStorage.setItem(
                     "token",
                     response?.data?.data?.accessToken
                 );
+                console.log(response?.data?.data, "userFrom Login");
+                handleLoginFn(response?.data?.data);
                 toast.success(response?.data?.message);
                 navigate("/");
             }

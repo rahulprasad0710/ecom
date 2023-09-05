@@ -6,7 +6,7 @@ import { useContext } from "react";
 
 const Navbar = () => {
     const { userInfo, handleLogoutFn } = useContext(AuthContext);
-    console.log(userInfo, "userInfo from navbar");
+    // console.log(userInfo, "userInfo from navbar");
     const { handleDarkMode, isDarkMode } = useThemeContext();
     const handleToggleDarkMode = () => {
         handleDarkMode();
