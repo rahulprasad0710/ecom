@@ -4,8 +4,11 @@ import { toast } from "react-toastify";
 import { useState } from "react";
 import API_ROUTES from "../../../api/apiRoutes";
 import { Eye, EyeSlash } from "react-bootstrap-icons";
+import useAuthContext from "../../../hook/useAuthContext";
 
 const AdminLogin = () => {
+    const { handleLoginFn } = useAuthContext();
+
     const [showPassword, setShowPassword] = useState(false);
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
@@ -29,6 +32,8 @@ const AdminLogin = () => {
                     "token",
                     response?.data?.data?.accessToken
                 );
+                console.log(response?.data?.data, "Admin Login");
+                handleLoginFn(response?.data?.data);
                 toast.success(response.data.message);
                 navigate("/admin/dashboard");
             }

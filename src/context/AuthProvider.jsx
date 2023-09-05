@@ -20,6 +20,15 @@ const AuthProvider = (props) => {
     const tokenFromLocalStore = localStorage.getItem("token");
     const [token, setToken] = useState(tokenFromLocalStore ?? null);
     const [isAuthenticating, setIsAuthenticating] = useState(false);
+
+    const handleLoginFn = async (payload) => {
+        setuserInfo(payload);
+    };
+
+    const handleLogoutFn = () => {
+        localStorage.removeItem("token");
+        setuserInfo(intialState);
+    };
     const handleAuthenticateFn = async () => {
         setIsAuthenticating(true);
         try {
@@ -36,20 +45,12 @@ const AuthProvider = (props) => {
                 setToken(userFromBackend?.accessToken);
             }
         } catch (error) {
-            console.log(error);
+            handleLogoutFn();
         } finally {
             setIsAuthenticating(false);
         }
     };
 
-    const handleLoginFn = async (payload) => {
-        setuserInfo(payload);
-    };
-
-    const handleLogoutFn = () => {
-        localStorage.removeItem("token");
-        setuserInfo(intialState);
-    };
     useEffect(() => {
         if (token) {
             handleAuthenticateFn();

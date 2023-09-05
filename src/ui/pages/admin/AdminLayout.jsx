@@ -4,10 +4,11 @@ import useAuthContext from "../../../hook/useAuthContext";
 
 const AdminLayout = () => {
     const { userInfo } = useAuthContext();
+    console.log("userInfo Asdas", userInfo);
 
     return (
         <>
-            {userInfo?.id && userInfo?.isAdmin ? (
+            {userInfo?.isAdmin ? (
                 <div className='d-flex'>
                     <div className='shadow shadow-sm h-100'>
                         <Sidebar />

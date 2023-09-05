@@ -10,6 +10,10 @@ import AdminLayout from "../ui/pages/admin/AdminLayout";
 import AdminDashboard from "../ui/pages/admin/AdminDashboard";
 import HomePage from "../ui/pages/HomePage";
 import ProductPage from "../ui/pages/ProductList";
+import EmployeesLayout from "../ui/pages/admin/employees/EmployeesLayout";
+import EmployeesList from "../ui/pages/admin/employees/EmployeesList";
+import AddEmployees from "../ui/pages/admin/employees/AddEmployees";
+import CheckPermission from "../ui/pages/protectedpage/CheckPermission";
 
 const router = createBrowserRouter([
     {
@@ -51,8 +55,31 @@ const router = createBrowserRouter([
                         element: <AdminDashboard />,
                     },
                     {
-                        path: "employee",
-                        element: <h3>Employee List</h3>,
+                        path: "employees",
+                        element: <EmployeesLayout />,
+                        children: [
+                            {
+                                path: "list",
+
+                                element: (
+                                    <CheckPermission
+                                        CheckPermission
+                                        requiredPermission='ADMIN_VIEW'>
+                                        <EmployeesList />
+                                    </CheckPermission>
+                                ),
+                            },
+                            {
+                                path: "add",
+                                element: (
+                                    <CheckPermission
+                                        CheckPermission
+                                        requiredPermission='ADMIN_ADD'>
+                                        <AddEmployees />
+                                    </CheckPermission>
+                                ),
+                            },
+                        ],
                     },
                 ],
             },
