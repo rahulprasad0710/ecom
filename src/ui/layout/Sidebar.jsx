@@ -18,21 +18,27 @@ const Sidebar = () => {
                     </li>
                     <li>
                         <NavLink
-                            to='/admin/employees/list'
-                            className='nav-link link-dark'>
-                            Employees
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink
                             to='/admin/orders/list'
                             className='nav-link link-dark'>
                             Orders
                         </NavLink>
                     </li>
                     <li>
+                        <NavLink
+                            to='/admin/employees/list'
+                            className='nav-link link-dark'>
+                            Employees
+                        </NavLink>
+                    </li>
+
+                    <li>
                         <a href='#' className='nav-link link-dark'>
                             Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href='#' className='nav-link link-dark'>
+                            Categories
                         </a>
                     </li>
                     <li>
