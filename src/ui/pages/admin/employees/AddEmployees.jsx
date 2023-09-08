@@ -22,8 +22,12 @@ import PERMISSION from "../../../../contants/Permission";
 import API_ROUTES from "../../../../api/apiRoutes";
 
 const AddEmployees = () => {
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-    const [permissionValue, setPermissionValue] = useState();
+    const [permissionValue, setPermissionValue] = useState({
+        label: PERMISSION[0],
+        value: PERMISSION[0],
+    });
     const [adminData, setAdminData] = useState({
         firstName: "",
         middleName: "",
@@ -48,9 +52,11 @@ const AddEmployees = () => {
     });
 
     const handleSubmit = async (e) => {
+        setIsLoading(true);
         e.preventDefault();
+
         console.log(permissionValue, "permissionValue");
-        const permissionPayload = permissionValue.map((item) => {
+        const permissionPayload = permissionValue?.map((item) => {
             return item.value;
         });
         console.log(adminData, "submit");
@@ -60,6 +66,7 @@ const AddEmployees = () => {
             permission: permissionPayload,
         };
         const token = localStorage.getItem("token");
+
         try {
             const response = await axios.post(API_ROUTES.ADD_ADMIN, payload, {
                 headers: {
@@ -75,6 +82,8 @@ const AddEmployees = () => {
             }
         } catch (error) {
             console.log(error);
+        } finally {
+            setIsLoading(false);
         }
     };
     return (
