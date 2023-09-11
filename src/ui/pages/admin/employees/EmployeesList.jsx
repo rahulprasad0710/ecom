@@ -17,7 +17,7 @@ const DataList = () => {
                 <h5>Employee List</h5>
                 <div>
                     <Link
-                        to='/admin/data/add'
+                        to='/admin/employees/add'
                         className='btn btn-success btn-sm'>
                         Add Employee
                     </Link>

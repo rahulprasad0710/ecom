@@ -1,3 +1,7 @@
 .main {
     min-height: calc(100vh - 70px);
 }
+
+.table-spinner {
+    min-height: 60vh;
+}

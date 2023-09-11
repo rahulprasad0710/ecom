@@ -15,6 +15,14 @@ import EmployeesList from "../ui/pages/admin/employees/EmployeesList";
 import AddEmployees from "../ui/pages/admin/employees/AddEmployees";
 import CheckPermission from "../ui/pages/protectedpage/CheckPermission";
 
+// user Routes
+import UserLayout from "../ui/pages/admin/users/UserLayout";
+import UserList from "../ui/pages/admin/users/UserList";
+// category ROutes
+import CategoryLayout from "../ui/pages/admin/categories/CategoryLayout";
+import CategoryList from "../ui/pages/admin/categories/CategoryList";
+import AddCategory from "../ui/pages/admin/categories/AddCategory";
+
 const router = createBrowserRouter([
     {
         path: "/",
@@ -76,6 +84,50 @@ const router = createBrowserRouter([
                                         CheckPermission
                                         requiredPermission='ADMIN_ADD'>
                                         <AddEmployees />
+                                    </CheckPermission>
+                                ),
+                            },
+                        ],
+                    },
+                    {
+                        path: "categories",
+                        element: <CategoryLayout />,
+                        children: [
+                            {
+                                path: "list",
+
+                                element: (
+                                    <CheckPermission
+                                        CheckPermission
+                                        requiredPermission='CATEGORY_VIEW'>
+                                        <CategoryList />
+                                    </CheckPermission>
+                                ),
+                            },
+                            {
+                                path: "add",
+                                element: (
+                                    <CheckPermission
+                                        CheckPermission
+                                        requiredPermission='CATEGORY_CREATE'>
+                                        <AddCategory />
+                                    </CheckPermission>
+                                ),
+                            },
+                        ],
+                    },
+                    {
+                        path: "customers",
+                        element: <UserLayout />,
+                        children: [
+                            {
+                                path: "list",
+
+                                element: (
+                                    <CheckPermission
+                                        CheckPermission
+                                        requiredPermission='USER_VIEW'>
+                                        <UserList />
                                     </CheckPermission>
                                 ),
                             },

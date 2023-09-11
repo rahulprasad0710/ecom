@@ -9,7 +9,7 @@ const AdminLayout = () => {
     return (
         <>
             {userInfo?.isAdmin ? (
-                <div className='d-flex'>
+                <div className='d-flex w-100'>
                     <div className='shadow shadow-sm h-100'>
                         <Sidebar />
                     </div>

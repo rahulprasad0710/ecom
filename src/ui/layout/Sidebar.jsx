@@ -37,14 +37,18 @@ const Sidebar = () => {
                         </a>
                     </li>
                     <li>
-                        <a href='#' className='nav-link link-dark'>
+                        <NavLink
+                            to='/admin/categories/list'
+                            className='nav-link link-dark'>
                             Categories
-                        </a>
+                        </NavLink>
                     </li>
                     <li>
-                        <a href='#' className='nav-link link-dark'>
+                        <NavLink
+                            to='/admin/customers/list'
+                            className='nav-link link-dark'>
                             Customers
-                        </a>
+                        </NavLink>
                     </li>
                 </ul>
                 <hr />

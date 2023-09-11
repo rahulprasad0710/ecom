@@ -5,6 +5,8 @@ const API_ROUTES = {
     AUTH_ME: "https://ecommerce-api-jbj8.onrender.com/api/auth/me",
     ADD_ADMIN: "https://ecommerce-api-jbj8.onrender.com/api/employees",
     GET_EMPLOYEES_LIST: "employees",
+    GET_USERS: "users",
+    GET_CATEGORY_LIST: "https://ecommerce-api-jbj8.onrender.com/api/categories",
 };
 
 export default API_ROUTES;

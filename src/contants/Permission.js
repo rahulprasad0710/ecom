@@ -34,4 +34,11 @@ const PERMISSION = [
     "ORDER_CREATE",
 ];
 
+const PERMISSION_NAME = {
+    DASHBOARD_VIEW: "DASHBOARD_VIEW",
+    IMAGE_VIEW: "IMAGE_VIEW",
+    USER_VIEW: "USER_VIEW",
+    USER_EDIT: "USER_EDIT",
+};
+
 export default PERMISSION;
