@@ -70,9 +70,7 @@ const router = createBrowserRouter([
                                 path: "list",
 
                                 element: (
-                                    <CheckPermission
-                                        CheckPermission
-                                        requiredPermission='ADMIN_VIEW'>
+                                    <CheckPermission requiredPermission='ADMIN_VIEW'>
                                         <EmployeesList />
                                     </CheckPermission>
                                 ),
@@ -80,9 +78,7 @@ const router = createBrowserRouter([
                             {
                                 path: "add",
                                 element: (
-                                    <CheckPermission
-                                        CheckPermission
-                                        requiredPermission='ADMIN_ADD'>
+                                    <CheckPermission requiredPermission='ADMIN_ADD'>
                                         <AddEmployees />
                                     </CheckPermission>
                                 ),
@@ -98,7 +94,7 @@ const router = createBrowserRouter([
 
                                 element: (
                                     <CheckPermission
-                                        CheckPermission
+                                        x='5'
                                         requiredPermission='CATEGORY_VIEW'>
                                         <CategoryList />
                                     </CheckPermission>
@@ -107,9 +103,7 @@ const router = createBrowserRouter([
                             {
                                 path: "add",
                                 element: (
-                                    <CheckPermission
-                                        CheckPermission
-                                        requiredPermission='CATEGORY_CREATE'>
+                                    <CheckPermission requiredPermission='CATEGORY_CREATE'>
                                         <AddCategory />
                                     </CheckPermission>
                                 ),
@@ -124,9 +118,7 @@ const router = createBrowserRouter([
                                 path: "list",
 
                                 element: (
-                                    <CheckPermission
-                                        CheckPermission
-                                        requiredPermission='USER_VIEW'>
+                                    <CheckPermission requiredPermission='USER_VIEW'>
                                         <UserList />
                                     </CheckPermission>
                                 ),

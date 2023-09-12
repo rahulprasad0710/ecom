@@ -5,6 +5,7 @@ import { Navigate } from "react-router-dom";
 const CheckPermission = (props) => {
     // eslint-disable-next-line react/prop-types
     const { requiredPermission, children } = props;
+
     const { userInfo } = useAuthContext();
 
     const hasPermission = useMemo(() => {
