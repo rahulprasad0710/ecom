@@ -13,7 +13,9 @@ const AdminLayout = () => {
                     <div className='shadow shadow-sm h-100'>
                         <Sidebar />
                     </div>
-                    <Outlet />
+                    <div className='w-100 p-3'>
+                        <Outlet />
+                    </div>
                 </div>
             ) : (
                 <Navigate to={"/"} />

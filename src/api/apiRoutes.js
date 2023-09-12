@@ -7,6 +7,9 @@ const API_ROUTES = {
     GET_EMPLOYEES_LIST: "employees",
     GET_USERS: "users",
     GET_CATEGORY_LIST: "https://ecommerce-api-jbj8.onrender.com/api/categories",
+    ADD_CATEGORY: "https://ecommerce-api-jbj8.onrender.com/api/categories",
+    GET_PRIVATE_CATEGORY_LIST:
+        "https://ecommerce-api-jbj8.onrender.com/api/categories/all",
 };
 
 export default API_ROUTES;

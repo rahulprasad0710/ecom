@@ -33,6 +33,7 @@ const useFetch = () => {
         fetchDataByUrl,
         pagination,
         setPagination,
+        setData,
     };
 };
 
