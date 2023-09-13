@@ -10,6 +10,9 @@ const API_ROUTES = {
     ADD_CATEGORY: "https://ecommerce-api-jbj8.onrender.com/api/categories",
     GET_PRIVATE_CATEGORY_LIST:
         "https://ecommerce-api-jbj8.onrender.com/api/categories/all",
+
+    //products routes
+    GET_PRIVATE_PRODUCT_LIST: "products",
 };
 
 export default API_ROUTES;

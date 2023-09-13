@@ -18,6 +18,7 @@ const useFetch = () => {
             const response = await PrivateAxios.get(url);
             setData(response?.data?.data);
             setPagination(response.data.pagination);
+            setError(null);
         } catch (error) {
             console.log(error);
             setError(error);

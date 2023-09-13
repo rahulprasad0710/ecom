@@ -22,6 +22,8 @@ import UserList from "../ui/pages/admin/users/UserList";
 import CategoryLayout from "../ui/pages/admin/categories/CategoryLayout";
 import CategoryList from "../ui/pages/admin/categories/CategoryList";
 import AddCategory from "../ui/pages/admin/categories/AddCategory";
+import ProductLayout from "../ui/pages/admin/products/ProductLayout";
+import ProductList from "../ui/pages/admin/products/ProductList";
 
 const router = createBrowserRouter([
     {
@@ -97,6 +99,29 @@ const router = createBrowserRouter([
                                         x='5'
                                         requiredPermission='CATEGORY_VIEW'>
                                         <CategoryList />
+                                    </CheckPermission>
+                                ),
+                            },
+                            {
+                                path: "add",
+                                element: (
+                                    <CheckPermission requiredPermission='CATEGORY_CREATE'>
+                                        <AddCategory />
+                                    </CheckPermission>
+                                ),
+                            },
+                        ],
+                    },
+                    {
+                        path: "products",
+                        element: <ProductLayout />,
+                        children: [
+                            {
+                                path: "list",
+
+                                element: (
+                                    <CheckPermission requiredPermission='PRODUCT_VIEW'>
+                                        <ProductList />
                                     </CheckPermission>
                                 ),
                             },

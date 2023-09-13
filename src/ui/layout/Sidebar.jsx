@@ -30,11 +30,12 @@ const Sidebar = () => {
                             Employees
                         </NavLink>
                     </li>
-
                     <li>
-                        <a href='#' className='nav-link link-dark'>
+                        <NavLink
+                            to='/admin/products/list'
+                            className='nav-link link-dark'>
                             Products
-                        </a>
+                        </NavLink>
                     </li>
                     <li>
                         <NavLink

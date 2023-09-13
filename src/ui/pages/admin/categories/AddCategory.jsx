@@ -102,9 +102,15 @@ const AddCategory = () => {
                 API_ROUTE.ADD_CATEGORY,
                 payload
             );
+
+            if (response?.data?.success) {
+                toast.success(response?.data?.message);
+                navigate("/admin/categories");
+            }
             console.log(response);
         } catch (error) {
             console.log(error);
+            toast.error(error?.response?.data?.message);
         }
     };
 
