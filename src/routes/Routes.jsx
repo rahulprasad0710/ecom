@@ -24,6 +24,7 @@ import CategoryList from "../ui/pages/admin/categories/CategoryList";
 import AddCategory from "../ui/pages/admin/categories/AddCategory";
 import ProductLayout from "../ui/pages/admin/products/ProductLayout";
 import ProductList from "../ui/pages/admin/products/ProductList";
+import ViewProduct from "../ui/pages/admin/products/ViewProduct";
 
 const router = createBrowserRouter([
     {
@@ -116,6 +117,15 @@ const router = createBrowserRouter([
                         path: "products",
                         element: <ProductLayout />,
                         children: [
+                            {
+                                path: ":productId",
+
+                                element: (
+                                    <CheckPermission requiredPermission='PRODUCT_VIEW'>
+                                        <ViewProduct />
+                                    </CheckPermission>
+                                ),
+                            },
                             {
                                 path: "list",
 

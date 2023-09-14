@@ -1,10 +1,11 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import API_ROUTES from "../../../../api/apiRoutes";
 import useFetch from "../../../../hook/useFetch";
 
 const ProductList = () => {
     const baseUrl = API_ROUTES.GET_PRIVATE_PRODUCT_LIST;
-
+    const navigate = useNavigate();
     const { data, isLoading, fetchDataByUrl } = useFetch();
 
     useEffect(() => {
@@ -14,6 +15,10 @@ const ProductList = () => {
     useEffect(() => {
         console.log(data);
     }, [data]);
+
+    const handleView = (id) => {
+        navigate(`/admin/products/${id}`);
+    };
 
     return (
         <div>
@@ -62,7 +67,11 @@ const ProductList = () => {
                                             )}
                                         </td>
                                         <td>
-                                            <button className='btn btn-info btn-sm'>
+                                            <button
+                                                onClick={() =>
+                                                    handleView(item._id)
+                                                }
+                                                className='btn btn-info btn-sm'>
                                                 View
                                             </button>
                                         </td>
