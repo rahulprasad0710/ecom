@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import API_ROUTES from "../../../../api/apiRoutes";
 import useFetch from "../../../../hook/useFetch";
+import PermissionButton from "../../../molecules/PermissionButton";
 
 const ProductList = () => {
     const baseUrl = API_ROUTES.GET_PRIVATE_PRODUCT_LIST;
@@ -22,7 +23,14 @@ const ProductList = () => {
 
     return (
         <div>
-            <h3>ProductList</h3>
+            <div className='d-flex justify-content-between mb-3'>
+                <h4>Product List</h4>
+                <PermissionButton
+                    requiredPermission='PRODUCT_CREATE'
+                    toTitle='Add New Products'
+                    toPath='/admin/products/add'
+                />
+            </div>
 
             <section className='my-3'>
                 <table className='table'>

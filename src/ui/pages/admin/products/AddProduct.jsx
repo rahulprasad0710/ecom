@@ -1,7 +1,11 @@
-import React from "react";
+import ViewHeading from "../../../components/ViewHeading";
 
 const AddProduct = () => {
-    return <div>AddProduct</div>;
+    return (
+        <div>
+            <ViewHeading headingTitle={"Add Products"} />
+        </div>
+    );
 };
 
 export default AddProduct;
