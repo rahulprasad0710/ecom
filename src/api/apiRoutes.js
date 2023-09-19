@@ -13,6 +13,7 @@ const API_ROUTES = {
 
     //products routes
     GET_PRIVATE_PRODUCT_LIST: "products",
+    POST_PRODUCT: "products",
 };
 
 export default API_ROUTES;
