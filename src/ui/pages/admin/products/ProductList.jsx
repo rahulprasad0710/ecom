@@ -9,13 +9,15 @@ import { toast } from "react-toastify";
 
 const ProductList = () => {
     const baseUrl = API_ROUTES.GET_PRIVATE_PRODUCT_LIST;
+    const [fetchUrl, setFetchUrl] = useState(baseUrl);
+
     const navigate = useNavigate();
     const { data, isLoading, fetchDataByUrl, setData } = useFetch();
     const [fetchAgain, setFetchAgain] = useState(false);
 
     useEffect(() => {
-        fetchDataByUrl(baseUrl);
-    }, [baseUrl, fetchDataByUrl]);
+        fetchDataByUrl(fetchUrl);
+    }, [fetchUrl, fetchDataByUrl]);
 
     useEffect(() => {
         console.log(data);
@@ -27,10 +29,10 @@ const ProductList = () => {
 
     useEffect(() => {
         if (fetchAgain) {
-            fetchDataByUrl(baseUrl);
+            fetchDataByUrl(fetchUrl);
             setFetchAgain(false);
         }
-    }, [fetchAgain]);
+    }, [fetchAgain, fetchDataByUrl, fetchUrl]);
 
     const handleChangeStatus = async (status, productId) => {
         console.log(status);
@@ -67,6 +69,12 @@ const ProductList = () => {
         }
     };
 
+    const handleSortStatus = (status) => {
+        console.log(status);
+        const newUrl = `${baseUrl}?status=${status}`;
+        setFetchUrl(newUrl);
+    };
+
     return (
         <div>
             <div className='d-flex justify-content-between mb-3'>
@@ -79,6 +87,39 @@ const ProductList = () => {
             </div>
 
             <section className='my-3'>
+                <div className='row my-3'>
+                    <div className='col-md-4 '>
+                        <label htmlFor=''>Sort By:</label>
+                        <select
+                            onChange={(e) => handleSortStatus(e.target.value)}
+                            className='form-select form-select-sm'>
+                            {PRODUCT_STATUS_LIST.map((status) => (
+                                <option key={status} value={status}>
+                                    {status.replace("_", " ")}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div className='col-md-4'></div>
+
+                    <div className='col-md-4 '>
+                        <nav aria-label='Page navigation float-end'>
+                            <ul className='pagination'>
+                                <li className='page-item'>
+                                    <button className='page-link' href='#'>
+                                        Previous
+                                    </button>
+                                </li>
+
+                                <li className='page-item'>
+                                    <button className='page-link' href='#'>
+                                        Next
+                                    </button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
                 <table className='table'>
                     <thead>
                         <tr>
