@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import API_ROUTES from "../../../../api/apiRoutes";
 import useFetch from "../../../../hook/useFetch";
 import PermissionButton from "../../../molecules/PermissionButton";
+import { PRODUCT_STATUS_LIST } from "../../../../contants/Product";
+import { PrivateAxios } from "../../../../api/AxiosInstance";
 
 const ProductList = () => {
     const baseUrl = API_ROUTES.GET_PRIVATE_PRODUCT_LIST;
@@ -19,6 +21,23 @@ const ProductList = () => {
 
     const handleView = (id) => {
         navigate(`/admin/products/${id}`);
+    };
+
+    const handleChangeStatus = async (status, productId) => {
+        console.log(status);
+        console.log(productId);
+        const payload = {
+            status,
+        };
+        const url = `${API_ROUTES.GET_PRIVATE_PRODUCT_LIST}/${productId}`;
+
+        try {
+            const response = await PrivateAxios.put(url, payload);
+
+            console.log({ response });
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -40,8 +59,9 @@ const ProductList = () => {
                             <th scope='col'>Thumbnil</th>
                             <th scope='col'>Product Code</th>
                             <th scope='col'>Product Name</th>
-                            <th scope='col'>Status</th>
-                            <th scope='col'>Acctions</th>
+                            <th scope='col'>Current Status</th>
+                            <th scope='col'>Actions</th>
+                            <th scope='col'>Change Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -66,11 +86,17 @@ const ProductList = () => {
                                         <td>
                                             {item.status === "ACTIVE" ? (
                                                 <span className='badge rounded-pill text-bg-success'>
-                                                    {item.status}
+                                                    {item.status.replace(
+                                                        "_",
+                                                        " "
+                                                    )}
                                                 </span>
                                             ) : (
                                                 <span className='badge rounded-pill text-bg-warning'>
-                                                    {item.status}
+                                                    {item.status.replace(
+                                                        "_",
+                                                        " "
+                                                    )}
                                                 </span>
                                             )}
                                         </td>
@@ -82,6 +108,30 @@ const ProductList = () => {
                                                 className='btn btn-info btn-sm'>
                                                 View
                                             </button>
+                                        </td>
+                                        <td>
+                                            <select
+                                                onChange={(e) =>
+                                                    handleChangeStatus(
+                                                        e.target.value,
+                                                        item._id
+                                                    )
+                                                }
+                                                value={item.status}
+                                                className='form-select form-select-sm'>
+                                                {PRODUCT_STATUS_LIST.map(
+                                                    (status) => (
+                                                        <option
+                                                            key={status}
+                                                            value={status}>
+                                                            {status.replace(
+                                                                "_",
+                                                                " "
+                                                            )}
+                                                        </option>
+                                                    )
+                                                )}
+                                            </select>
                                         </td>
                                     </tr>
                                 );
