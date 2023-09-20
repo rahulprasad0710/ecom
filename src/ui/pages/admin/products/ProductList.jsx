@@ -1,15 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import API_ROUTES from "../../../../api/apiRoutes";
 import useFetch from "../../../../hook/useFetch";
 import PermissionButton from "../../../molecules/PermissionButton";
 import { PRODUCT_STATUS_LIST } from "../../../../contants/Product";
 import { PrivateAxios } from "../../../../api/AxiosInstance";
+import { toast } from "react-toastify";
 
 const ProductList = () => {
     const baseUrl = API_ROUTES.GET_PRIVATE_PRODUCT_LIST;
     const navigate = useNavigate();
-    const { data, isLoading, fetchDataByUrl } = useFetch();
+    const { data, isLoading, fetchDataByUrl, setData } = useFetch();
+    const [fetchAgain, setFetchAgain] = useState(false);
 
     useEffect(() => {
         fetchDataByUrl(baseUrl);
@@ -23,6 +25,13 @@ const ProductList = () => {
         navigate(`/admin/products/${id}`);
     };
 
+    useEffect(() => {
+        if (fetchAgain) {
+            fetchDataByUrl(baseUrl);
+            setFetchAgain(false);
+        }
+    }, [fetchAgain]);
+
     const handleChangeStatus = async (status, productId) => {
         console.log(status);
         console.log(productId);
@@ -34,9 +43,27 @@ const ProductList = () => {
         try {
             const response = await PrivateAxios.put(url, payload);
 
+            if (response?.data?.sucess) {
+                // setFetchAgain(true);
+                const tempData = data;
+                console.log(tempData);
+                const newData = tempData.map((item) => {
+                    if (item._id === productId) {
+                        item.status = status;
+                        return item;
+                    } else {
+                        return item;
+                    }
+                });
+
+                setData(newData);
+                toast.success(response?.data?.message);
+            }
+
             console.log({ response });
         } catch (error) {
             console.log(error);
+            toast.error("Something Went Error");
         }
     };
 
