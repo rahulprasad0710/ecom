@@ -1,5 +1,14 @@
+import FeaturedSection from "../components/FeaturedSection";
+
 const HomePage = () => {
-    return <div>Home Page</div>;
+    const showSection = ["NEW_ARRIVAL", "TOP_RATED", "RECOMMENDED", "TRENDING"];
+    return (
+        <div>
+            <section>
+                <FeaturedSection />
+            </section>
+        </div>
+    );
 };
 
 export default HomePage;

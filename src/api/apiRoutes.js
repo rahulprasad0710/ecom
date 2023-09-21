@@ -14,6 +14,7 @@ const API_ROUTES = {
     //products routes
     GET_PRIVATE_PRODUCT_LIST: "products",
     POST_PRODUCT: "products",
+    PUBLIC_PRODUCTS_ROUTE: "products/p",
 };
 
 export default API_ROUTES;
