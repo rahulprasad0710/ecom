@@ -9,7 +9,7 @@ import PageNotFound from "../ui/pages/utils/PageNotFound";
 import AdminLayout from "../ui/pages/admin/AdminLayout";
 import AdminDashboard from "../ui/pages/admin/AdminDashboard";
 import HomePage from "../ui/pages/HomePage";
-import ProductPage from "../ui/pages/ProductList";
+// import ProductPage from "../ui/pages/ProductList";
 import EmployeesLayout from "../ui/pages/admin/employees/EmployeesLayout";
 import EmployeesList from "../ui/pages/admin/employees/EmployeesList";
 import AddEmployees from "../ui/pages/admin/employees/AddEmployees";
@@ -28,7 +28,17 @@ import ProductLayout from "../ui/pages/admin/products/ProductLayout";
 import ProductList from "../ui/pages/admin/products/ProductList";
 import AddProduct from "../ui/pages/admin/products/AddProduct";
 
+// public product Routes
+
+import PublicProductLayout from "../ui/pages/products/ProductLayout";
+import MainProduct from "../ui/pages/products/MainProduct";
+import SingleProductPage from "../ui/pages/products/SingleProductPage";
+
 import ViewProduct from "../ui/pages/admin/products/ViewProduct";
+
+import CustomerLayout from "../ui/pages/customers/CustomerLayout";
+import CustomerDashboard from "../ui/pages/customers/CustomerDashboard";
+import CustomerWishlist from "../ui/pages/customers/CustomerWishlIst";
 
 const router = createBrowserRouter([
     {
@@ -41,7 +51,32 @@ const router = createBrowserRouter([
             },
             {
                 path: "products",
-                element: <ProductPage />,
+                element: <PublicProductLayout />,
+                children: [
+                    {
+                        path: "",
+                        element: <MainProduct />,
+                    },
+                    {
+                        path: ":productSlug",
+                        element: <SingleProductPage />,
+                    },
+                ],
+            },
+
+            {
+                path: "my-account",
+                element: <CustomerLayout />,
+                children: [
+                    {
+                        path: "",
+                        element: <CustomerDashboard />,
+                    },
+                    {
+                        path: "wishlist",
+                        element: <CustomerWishlist />,
+                    },
+                ],
             },
             {
                 path: "auth",

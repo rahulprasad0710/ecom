@@ -3,8 +3,9 @@ import useFetch from "../../hook/useFetch";
 import API_ROUTE from "../../api/apiRoutes";
 import SingleProduct from "./SingleProduct";
 
-const FeaturedSection = () => {
-    const featuredIn = "COMING_SOON";
+const FeaturedSection = (props) => {
+    // eslint-disable-next-line react/prop-types
+    const { featuredIn } = props;
     const baseURl = `${API_ROUTE.PUBLIC_PRODUCTS_ROUTE}?featuredIn=${featuredIn}`;
 
     const { isLoading, data, error, fetchDataByUrl } = useFetch();

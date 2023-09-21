@@ -8,7 +8,7 @@ function App() {
     return (
         <div className='app bg-light'>
             <Navbar />
-            <div className='main'>
+            <div className='container main'>
                 <Outlet />
             </div>
             <Footer />

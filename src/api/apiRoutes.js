@@ -15,6 +15,9 @@ const API_ROUTES = {
     GET_PRIVATE_PRODUCT_LIST: "products",
     POST_PRODUCT: "products",
     PUBLIC_PRODUCTS_ROUTE: "products/p",
+
+    // customer ROute
+    WISHLIST_ROUTES: "customers/wishlist",
 };
 
 export default API_ROUTES;

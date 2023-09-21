@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 const SingleProduct = (props) => {
     const { product } = props;
     return (
-        <div className='card p-3 m-3'>
+        <Link to={`/products/${product.slug}`} className='card p-3 m-3'>
             <div>
                 <img
                     className='img-fluid'
@@ -15,7 +17,7 @@ const SingleProduct = (props) => {
                 <h4>{product?.mrp}</h4>
                 <h4>{product?.price}</h4>
             </div>
-        </div>
+        </Link>
     );
 };
 

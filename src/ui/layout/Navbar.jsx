@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { BrightnessAltHigh, MoonFill } from "react-bootstrap-icons";
+import { BrightnessAltHigh, Heart, MoonFill } from "react-bootstrap-icons";
 import useThemeContext from "../../hook/useThemeContext";
 import { AuthContext } from "../../context/AuthContext";
 import { useContext } from "react";
@@ -71,6 +71,13 @@ const Navbar = () => {
                                         className='nav-link'
                                         to='/my-account/profile'>
                                         My account
+                                    </NavLink>
+                                </li>
+                                <li className='nav-item'>
+                                    <NavLink
+                                        className='nav-link'
+                                        to='/my-account/wishlist'>
+                                        <Heart />
                                     </NavLink>
                                 </li>
                                 <li className='nav-item'>

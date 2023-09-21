@@ -5,7 +5,9 @@ const HomePage = () => {
     return (
         <div>
             <section>
-                <FeaturedSection />
+                {showSection.map((item, index) => (
+                    <FeaturedSection key={index} featuredIn={item} />
+                ))}
             </section>
         </div>
     );
