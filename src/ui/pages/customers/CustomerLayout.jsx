@@ -1,7 +1,18 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
+import useAuthContext from "../../../hook/useAuthContext";
 
 const CustomerLayout = () => {
-    return <Outlet />;
+    const { userInfo } = useAuthContext();
+
+    return (
+        <>
+            {userInfo?.id && !userInfo?.isAdmin ? (
+                <Outlet />
+            ) : (
+                <Navigate to='/' />
+            )}
+        </>
+    );
 };
 
 export default CustomerLayout;

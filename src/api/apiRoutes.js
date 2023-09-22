@@ -18,6 +18,7 @@ const API_ROUTES = {
 
     // customer ROute
     WISHLIST_ROUTES: "customers/wishlist",
+    ADDRESS_ROUTES: "addresses",
 };
 
 export default API_ROUTES;

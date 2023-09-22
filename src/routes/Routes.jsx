@@ -39,6 +39,7 @@ import ViewProduct from "../ui/pages/admin/products/ViewProduct";
 import CustomerLayout from "../ui/pages/customers/CustomerLayout";
 import CustomerDashboard from "../ui/pages/customers/CustomerDashboard";
 import CustomerWishlist from "../ui/pages/customers/CustomerWishlIst";
+import AddAddress from "../ui/pages/address/AddAddress";
 
 const router = createBrowserRouter([
     {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
                     {
                         path: "wishlist",
                         element: <CustomerWishlist />,
+                    },
+                    {
+                        path: "add-address",
+                        element: <AddAddress />,
                     },
                 ],
             },

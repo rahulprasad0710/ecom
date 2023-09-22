@@ -5,6 +5,7 @@ import useFetch from "../../../hook/useFetch";
 import API_ROUTE from "../../../api/apiRoutes";
 import SingleProduct from "../../components/SingleProduct";
 import { PrivateAxios } from "../../../api/AxiosInstance";
+import ViewHeading from "../../components/ViewHeading";
 
 const CustomerWishlIst = () => {
     const baseURl = API_ROUTE.WISHLIST_ROUTES;
@@ -45,8 +46,8 @@ const CustomerWishlIst = () => {
     };
 
     return (
-        <div>
-            <h4>My Wishlist</h4>
+        <div className='py-3'>
+            <ViewHeading headingTitle='My Wishlist' />
             <section className='row'>
                 {data?.wishlist?.map((product) => {
                     return (
